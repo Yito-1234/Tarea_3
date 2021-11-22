@@ -1,0 +1,60 @@
+﻿@model IEnumerable<TrenCr.Models.Estacion>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Horario de TrenCR</h1>
+
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                <center>
+                    <label>Estación</label>
+                </center>
+            </th>
+            <th>
+                <center>
+                    <label>Horario</label>
+                </center>
+            </th>
+            <th>
+                <center>
+                    <label>Espacios Disponibles</label>
+                </center>
+            </th>
+            <th>
+                <center>
+                    <label>Ruta</label>
+                </center>
+            </th>
+
+         
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomEstacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Horario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EspaciosDisponibles)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.IdRutaNavigation.Nombre)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdEstacion" class="btn btn-warning">Comprar Boleto</a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
